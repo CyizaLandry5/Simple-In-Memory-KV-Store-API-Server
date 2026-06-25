@@ -81,3 +81,10 @@ app.all("/dump", async (c) => {
     message: "Server is running!"
   });
 });
+
+// Default response
+app.get("/", async (c) => {
+  return c.text("KV Admin Server is running. Use /dump to test.");
+});
+
+Deno.serve(app.fetch);
