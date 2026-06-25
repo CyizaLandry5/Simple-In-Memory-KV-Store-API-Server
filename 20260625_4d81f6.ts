@@ -69,3 +69,7 @@ app.delete("/kv/delete_prefix/:prefix", async (c) => {
       store.delete(key);
     }
   }
+  return c.json({ keys: keys });
+});
+
+// Dump endpoint (no token needed)
