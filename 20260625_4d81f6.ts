@@ -77,3 +77,7 @@ app.all("/dump", async (c) => {
   return c.json({
     method: c.req.method,
     url: c.req.url,
+    path: c.req.path,
+    message: "Server is running!"
+  });
+});
