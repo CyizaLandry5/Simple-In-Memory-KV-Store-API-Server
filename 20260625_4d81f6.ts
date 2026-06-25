@@ -55,3 +55,9 @@ app.delete("/kv/delete/:key", async (c) => {
   return c.json({ ok: true });
 });
 
+// Delete all keys with prefix
+app.delete("/kv/delete_prefix/:prefix", async (c) => {
+  const token = c.req.query("token");
+  if (token !== "2609_15e4c3:9ca6a5") {
+    return c.text("Missing or invalid token", 401);
+  }
