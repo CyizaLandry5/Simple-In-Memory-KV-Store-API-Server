@@ -17,3 +17,9 @@ app.post("/kv/set/:key", async (c) => {
   return c.json({ ok: true });
 });
 
+// Get a value
+app.get("/kv/get/:key", async (c) => {
+  const token = c.req.query("token");
+  if (token !== "2609_15e4c3:9ca6a5") {
+    return c.text("Missing or invalid token", 401);
+  }
