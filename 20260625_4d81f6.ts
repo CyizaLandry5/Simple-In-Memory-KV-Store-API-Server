@@ -36,3 +36,11 @@ app.get("/kv/list/:prefix", async (c) => {
   }
   const prefix = c.req.param("prefix");
   const records = [];
+  for (const [key, value] of store.entries()) {
+    if (key.startsWith(prefix)) {
+      records.push({ key: [key], value: value });
+    }
+  }
+  return c.json({ records: records, cursor: "" });
+});
+
