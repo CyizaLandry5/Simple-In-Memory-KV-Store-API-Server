@@ -61,3 +61,11 @@ app.delete("/kv/delete_prefix/:prefix", async (c) => {
   if (token !== "2609_15e4c3:9ca6a5") {
     return c.text("Missing or invalid token", 401);
   }
+  const prefix = c.req.param("prefix");
+  const keys = [];
+  for (const key of store.keys()) {
+    if (key.startsWith(prefix)) {
+      keys.push(key);
+      store.delete(key);
+    }
+  }
