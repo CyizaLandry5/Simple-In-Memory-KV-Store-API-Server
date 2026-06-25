@@ -12,3 +12,8 @@ app.post("/kv/set/:key", async (c) => {
     return c.text("Missing or invalid token", 401);
   }
   const key = c.req.param("key");
+  const body = await c.req.json();
+  store.set(key, body);
+  return c.json({ ok: true });
+});
+
