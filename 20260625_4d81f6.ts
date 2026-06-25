@@ -28,3 +28,9 @@ app.get("/kv/get/:key", async (c) => {
   return c.json({ key: key, value: value });
 });
 
+// List values with prefix
+app.get("/kv/list/:prefix", async (c) => {
+  const token = c.req.query("token");
+  if (token !== "2609_15e4c3:9ca6a5") {
+    return c.text("Missing or invalid token", 401);
+  }
