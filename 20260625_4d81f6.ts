@@ -73,3 +73,7 @@ app.delete("/kv/delete_prefix/:prefix", async (c) => {
 });
 
 // Dump endpoint (no token needed)
+app.all("/dump", async (c) => {
+  return c.json({
+    method: c.req.method,
+    url: c.req.url,
